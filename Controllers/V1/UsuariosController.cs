@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
-namespace ApiPeliculas.Controllers
+namespace ApiPeliculas.Controllers.V1
 {
     [Route("api/v{version:apiVersion}/usuarios")]
     [ApiController]
@@ -23,7 +23,7 @@ namespace ApiPeliculas.Controllers
         {
             _usRepo = usRepo;
             _mapper = mapper;
-            this._respuestaApi = new();
+            _respuestaApi = new();
         }
 
         [Authorize(Roles = "Admin")]
@@ -85,11 +85,11 @@ namespace ApiPeliculas.Controllers
                 _respuestaApi.StatusCode = HttpStatusCode.BadRequest;
                 _respuestaApi.IsSuccess = false;
                 _respuestaApi.ErrorMessage.Add("Error en el registro");
-                return BadRequest(_respuestaApi);   
+                return BadRequest(_respuestaApi);
             }
 
             _respuestaApi.StatusCode = HttpStatusCode.OK;
-            _respuestaApi.IsSuccess=true;
+            _respuestaApi.IsSuccess = true;
             return Ok(_respuestaApi);
         }
 
@@ -112,7 +112,7 @@ namespace ApiPeliculas.Controllers
 
             _respuestaApi.StatusCode = HttpStatusCode.OK;
             _respuestaApi.IsSuccess = true;
-            _respuestaApi.Result  = respuestaLogin;
+            _respuestaApi.Result = respuestaLogin;
 
             return Ok(_respuestaApi);
         }

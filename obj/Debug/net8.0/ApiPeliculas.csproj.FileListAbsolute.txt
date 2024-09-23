@@ -142,3 +142,4 @@ C:\Users\Lenovo Yoga\OneDrive\Documentos\MisArchivos\Programacion\To-do\Udemy\Do
 C:\Users\Lenovo Yoga\OneDrive\Documentos\MisArchivos\Programacion\To-do\Udemy\DotNet\Backend\ApiPeliculas\ApiPeliculas\bin\Debug\net8.0\Asp.Versioning.Http.dll
 C:\Users\Lenovo Yoga\OneDrive\Documentos\MisArchivos\Programacion\To-do\Udemy\DotNet\Backend\ApiPeliculas\ApiPeliculas\bin\Debug\net8.0\Asp.Versioning.Mvc.dll
 C:\Users\Lenovo Yoga\OneDrive\Documentos\MisArchivos\Programacion\To-do\Udemy\DotNet\Backend\ApiPeliculas\ApiPeliculas\bin\Debug\net8.0\Asp.Versioning.Mvc.ApiExplorer.dll
+C:\Users\Lenovo Yoga\OneDrive\Documentos\MisArchivos\Programacion\To-do\Udemy\DotNet\Backend\ApiPeliculas\ApiPeliculas\obj\Debug\net8.0\ApiPeliculas.sourcelink.json

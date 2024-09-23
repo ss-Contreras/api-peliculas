@@ -8,24 +8,24 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using XAct.Security;
 
-namespace ApiPeliculas.Controllers
+namespace ApiPeliculas.Controllers.V1
 {
     [Route("api/v{version:apiVersion}/categorias")]
     //[ResponseCache(Duration = 20)]
     //[Authorize]
-    [ApiVersion("2.0")]
+    [ApiVersion("1.0")]
     [ApiController]
-    public class CategoriasV2Controller : ControllerBase
+    public class CategoriasController : ControllerBase
     {
         private readonly ICategoriaRepositorio _ctRepo;
         private readonly IMapper _mapper;
 
-        public CategoriasV2Controller(ICategoriaRepositorio ctRepo, IMapper mapper)
+        public CategoriasController(ICategoriaRepositorio ctRepo, IMapper mapper)
         {
             _ctRepo = ctRepo;
             _mapper = mapper;
         }
-         
+
         [HttpGet]
         [ResponseCache(CacheProfileName = "PorDefecto30Segundos")]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
@@ -111,7 +111,7 @@ namespace ApiPeliculas.Controllers
                 return BadRequest(ModelState);
             }
 
-            if (categoriaDto == null ||  categoriaId != categoriaDto.Id)
+            if (categoriaDto == null || categoriaId != categoriaDto.Id)
             {
                 return BadRequest(ModelState);
             }

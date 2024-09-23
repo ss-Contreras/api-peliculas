@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace ApiPeliculas.Controllers
+namespace ApiPeliculas.Controllers.V1
 {
     [Route("api/v{version:apiVersion}/peliculas")]
     [ApiController]
@@ -165,13 +165,13 @@ namespace ApiPeliculas.Controllers
         {
             var listaPeliculas = _pelRepo.GetPeliculasEnCategoria(categoriaId);
 
-            if(listaPeliculas == null)
+            if (listaPeliculas == null)
             {
                 return NotFound();
             }
 
             var itemPelicula = new List<PeliculaDto>();
-            foreach (var pelicula in listaPeliculas)    
+            foreach (var pelicula in listaPeliculas)
             {
                 itemPelicula.Add(_mapper.Map<PeliculaDto>(pelicula));
             }
@@ -194,7 +194,7 @@ namespace ApiPeliculas.Controllers
                 {
                     return Ok(resultado);
                 }
-                return NotFound(); 
+                return NotFound();
             }
             catch (Exception)
             {
