@@ -14,6 +14,7 @@ namespace ApiPeliculas.Controllers.V1
     //[ResponseCache(Duration = 20)]
     //[Authorize]
     [ApiVersion("1.0")]
+
     [ApiController]
     public class CategoriasController : ControllerBase
     {
@@ -41,6 +42,14 @@ namespace ApiPeliculas.Controllers.V1
                 listaCategoriasDto.Add(_mapper.Map<CategoriaDto>(lista));
             }
             return Ok(listaCategoriasDto);
+        }
+
+        [HttpGet("GetString")]
+        //[MapToApiVersion("2.0")]
+        [Obsolete("Endpoint obsoleto, versión disponible: 2.0")]
+        public IEnumerable<string> Get()
+        {
+            return new string[] { "Steven", "Sergio" };
         }
 
         [HttpGet("{categoriaId:int}", Name = "GetCategoria")]

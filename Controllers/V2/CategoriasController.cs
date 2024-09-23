@@ -26,11 +26,11 @@ namespace ApiPeliculas.Controllers.V2
             _mapper = mapper;
         }
 
-        [HttpGet]
+        [HttpGet("GetString")]
         //[MapToApiVersion("2.0")]
         public IEnumerable<string> Get()
         {
-            return new string[] { "valor1", "valor2", "valor3" };
+            return new string[] { "Sergio", "Steven" };
         }
     }
 }
