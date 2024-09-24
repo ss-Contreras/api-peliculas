@@ -29,6 +29,7 @@ namespace ApiPeliculas.Controllers
 
         [Authorize(Roles = "Admin")]
         [HttpGet]
+        [ResponseCache(CacheProfileName = "PorDefecto30Segundos")]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public IActionResult GetUsuarios()
@@ -45,12 +46,13 @@ namespace ApiPeliculas.Controllers
         }
 
         [Authorize(Roles = "Admin")]
-        [HttpGet("{usuarioId:int}", Name = "GetUsuario")]
+        [HttpGet("{usuarioId}", Name = "GetUsuario")]
+        [ResponseCache(CacheProfileName = "PorDefecto30Segundos")]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public IActionResult GetUsuario(int usuarioId)
+        public IActionResult GetUsuario(string usuarioId)
         {
             var itemUsuario = _usRepo.GetUsuario(usuarioId);
 
@@ -76,7 +78,7 @@ namespace ApiPeliculas.Controllers
             {
                 _respuestaApi.StatusCode = HttpStatusCode.BadRequest;
                 _respuestaApi.IsSuccess = false;
-                _respuestaApi.ErrorMessage.Add("El nombre de usuario ya existe");
+                _respuestaApi.ErrorMessages.Add("El nombre de usuario ya existe");
                 return BadRequest(_respuestaApi);
             }
 
@@ -85,13 +87,14 @@ namespace ApiPeliculas.Controllers
             {
                 _respuestaApi.StatusCode = HttpStatusCode.BadRequest;
                 _respuestaApi.IsSuccess = false;
-                _respuestaApi.ErrorMessage.Add("Error en el registro");
+                _respuestaApi.ErrorMessages.Add("Error en el registro");
                 return BadRequest(_respuestaApi);
             }
 
             _respuestaApi.StatusCode = HttpStatusCode.OK;
             _respuestaApi.IsSuccess = true;
             return Ok(_respuestaApi);
+
         }
 
         [AllowAnonymous]
@@ -101,20 +104,20 @@ namespace ApiPeliculas.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> Login([FromBody] UsuarioLoginDto usuarioLoginDto)
         {
+
             var respuestaLogin = await _usRepo.Login(usuarioLoginDto);
 
             if (respuestaLogin.Usuario == null || string.IsNullOrEmpty(respuestaLogin.Token))
             {
                 _respuestaApi.StatusCode = HttpStatusCode.BadRequest;
                 _respuestaApi.IsSuccess = false;
-                _respuestaApi.ErrorMessage.Add("El nombre de usuario o contraseña son incorrectos.");
+                _respuestaApi.ErrorMessages.Add("El nombre de usuario o password son incorrectos");
                 return BadRequest(_respuestaApi);
             }
 
             _respuestaApi.StatusCode = HttpStatusCode.OK;
             _respuestaApi.IsSuccess = true;
             _respuestaApi.Result = respuestaLogin;
-
             return Ok(_respuestaApi);
         }
     }

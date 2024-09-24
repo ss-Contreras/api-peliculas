@@ -71,7 +71,7 @@
     "Parameters": [
       {
         "Name": "usuarioId",
-        "Type": "System.Int32",
+        "Type": "System.String",
         "IsRequired": true
       },
       {
@@ -126,7 +126,7 @@
     "Parameters": [
       {
         "Name": "usuarioId",
-        "Type": "System.Int32",
+        "Type": "System.String",
         "IsRequired": true
       },
       {
@@ -390,6 +390,11 @@
         "StatusCode": 400
       },
       {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 500
+      },
+      {
         "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
         "MediaTypes": [
           "text/plain",
@@ -397,11 +402,6 @@
           "text/json"
         ],
         "StatusCode": 401
-      },
-      {
-        "Type": "System.Void",
-        "MediaTypes": [],
-        "StatusCode": 500
       }
     ]
   },
@@ -497,11 +497,6 @@
           "text/json"
         ],
         "StatusCode": 401
-      },
-      {
-        "Type": "System.Void",
-        "MediaTypes": [],
-        "StatusCode": 500
       }
     ],
     "EndpointName": "ActualizarPatchCategoria"
@@ -675,9 +670,39 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "crearPeliculaDto",
-        "Type": "ApiPeliculas.Modelos.Dtos.CrearPeliculaDto",
-        "IsRequired": true
+        "Name": "Nombre",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Descripcion",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Duracion",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "RutaIMagen",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Imagen",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "Clasificacion",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "categoriaId",
+        "Type": "System.Int32",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": [
@@ -775,9 +800,54 @@
         "IsRequired": true
       },
       {
-        "Name": "peliculaDto",
-        "Type": "ApiPeliculas.Modelos.Dtos.PeliculaDto",
-        "IsRequired": true
+        "Name": "Id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Nombre",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Descripcion",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Duracion",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "RutaIMagen",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "RutaLocalIMagen",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Imagen",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "Clasificacion",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "FechaCreacion",
+        "Type": "System.Nullable\u00601[[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "categoriaId",
+        "Type": "System.Int32",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": [
@@ -787,6 +857,11 @@
         "StatusCode": 204
       },
       {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 500
+      },
+      {
         "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
         "MediaTypes": [
           "text/plain",
@@ -794,11 +869,6 @@
           "text/json"
         ],
         "StatusCode": 401
-      },
-      {
-        "Type": "System.Void",
-        "MediaTypes": [],
-        "StatusCode": 500
       }
     ],
     "EndpointName": "ActualizarPatchPelicula"
